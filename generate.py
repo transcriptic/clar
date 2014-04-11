@@ -235,6 +235,9 @@ if __name__ == '__main__':
 
     options, args = parser.parse_args()
 
+    print "Excluded paths are: ", options.excluded
+    print "Force option value is: ", options.force
+
     for path in args or ['.']:
         suite = TestSuite(path)
         suite.load(options.force)
