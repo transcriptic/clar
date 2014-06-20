@@ -145,12 +145,11 @@ class TestSuite(object):
         for root, _, files in os.walk(self.path):
             module_root = root[len(self.path):]
             module_root = [c for c in module_root.split(os.sep) if c]
-
             tests_in_module = fnmatch.filter(files, "*.c")
 
             for test_file in tests_in_module:
                 full_path = os.path.join(root, test_file)
-                module_name = "_".join(module_root + [test_file[:-2]])
+                module_name = "_".join(module_root + [test_file[:-2]]).replace("-", "_")
 
                 modules.append((full_path, module_name))
 
